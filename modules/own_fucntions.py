@@ -1,3 +1,5 @@
+import os
+
 def get_cook_book(file_):
     """
     возвращает словарь с рецептами блюд из файла
@@ -36,6 +38,15 @@ def get_cook_book(file_):
         return False
 
 def get_shop_list_by_dishes(dishes, person_count, cook_book):
+    """
+    получает список покупок ингредиентов
+    для блюд из книги рецептов
+    для определенного количества человек\n
+    args:\n
+    dishes(tuple): список блюд\n
+    person_count(int): количество персон\n
+    cook_book(dict): книга рецептов
+    """
     result = {}
     for dish in dishes:
         if dish in cook_book:
@@ -57,3 +68,36 @@ def get_shop_list_by_dishes(dishes, person_count, cook_book):
         result[key]['quantity'] *= person_count
 
     return result
+
+def sort_source_files(path, files):
+    """
+    возвращает файл собраный по условию задачи.
+    что бы отсротировать файлы по количеству строк,
+    добавляю в список списков данные и содержание файла
+    [[количество строк#имя файла#содержание], [...]]
+    замем result.sort()
+    после при выводе разбиваю строку по #
+    и записываю в переменные file_name, str_count, content
+    решение не самое элегантное, но уж какое родилось))
+    """
+    result = []
+    for file_ in files:
+        with open(f'{path}{file_}', 'r', encoding='utf-8') as f:
+            data = f.readlines()
+            str_count = len(data)
+            file_name = f.name.split('/')[1]
+            item = f'{str_count}#{file_name}#{"".join(data).strip()}'
+            result.append(item)
+    result.sort()
+
+    result_file = 'out/result.txt'
+
+    if os.path.isfile(result_file):
+        os.remove(result_file)
+
+    with open(result_file, 'a', encoding='utf-8') as f:
+        for item in result:
+            str_count, file_name, content = item.split('#')
+            f.write(f'{file_name}\n')
+            f.write(f'{str_count}\n')
+            f.write(f'{content}\n')
