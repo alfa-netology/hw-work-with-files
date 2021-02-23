@@ -2,4 +2,6 @@ import modules.own_fucntions as functions
 
 file = 'source/recipes.txt'
 
-print(functions.get_cook_book(file))
+# задача 1
+cook_book = functions.get_cook_book(file)
+print(cook_book)

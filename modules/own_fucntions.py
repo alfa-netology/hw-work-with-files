@@ -29,4 +29,8 @@ def get_cook_book(file_):
                     'measure': measure,
                 })
                 ingredient_quantity -= 1
-    return result
+
+    if len(result) > 0:
+        return result
+    else:
+        return False
