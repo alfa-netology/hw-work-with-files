@@ -1,14 +1,10 @@
-netology-home-work 
-Решение ДЗ 'Работа с файлами' - 1
+#### netology-home-work-work-with-files  
 
-create_dict_from_file()
-
++ **create_dict_from_file()**  
 функция чтения файла + создание словаря нужного формата
 
-get_shop_list_by_dishes()
-
++ **get_shop_list_by_dishes()**  
 получает список покупок ингредиентов для блюд из книги рецептов для определенного количества человек
 
-sort_source_files()
-
++ **sort_source_files()**  
 возвращает файл собраный по условию задачи №3
