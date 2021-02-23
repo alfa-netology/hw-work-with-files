@@ -86,10 +86,9 @@ def sort_source_files(path, files):
             data = f.readlines()
             str_count = len(data)
             file_name = f.name.split('/')[1]
-            item = f'{str_count}#{file_name}#{"".join(data).strip()}'
+            item = str_count, file_name, "".join(data).strip()
             result.append(item)
     result.sort()
-
     result_file = 'out/result.txt'
 
     if os.path.isfile(result_file):
@@ -97,7 +96,7 @@ def sort_source_files(path, files):
 
     with open(result_file, 'a', encoding='utf-8') as f:
         for item in result:
-            str_count, file_name, content = item.split('#')
+            str_count, file_name, content = item
             f.write(f'{file_name}\n')
             f.write(f'{str_count}\n')
             f.write(f'{content}\n')
