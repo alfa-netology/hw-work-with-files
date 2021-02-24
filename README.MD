@@ -1,4 +1,4 @@
-#### netology-home-work-work-with-files  
+#### netology-home-work-with-files  
 
 + **create_dict_from_file()**  
 функция чтения файла + создание словаря нужного формата
